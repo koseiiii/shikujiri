@@ -1,0 +1,67 @@
+<header>
+  <div class="shikujiri">
+    しくじり体験記
+  </div>
+  <div class="headerbox">
+      <%= link_to "ホーム", posts_path %>
+      <% if user_signed_in? %>
+        <%= link_to "マイページ", user_path(current_user.id) %>　
+      <% end %>
+      <%= link_to "新規投稿", new_post_path %>
+  </div>
+</header>
+
+<div class="content3">
+    <div class="submit">
+      <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索'  %>
+      <% end %>
+    </div>
+
+    <div class="posts-container">
+      <% @posts.each do |t| %>
+          <div class="mainbox">
+
+            <div class="high-container">
+              <div class="profileimage">
+                <%= link_to image_tag(t.user.image_url), user_path(t.user_id) if t.user.image? %>
+              </div>
+              <div class="name">
+                <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+              </div>
+              <div class="genre">
+                <div class="genre2"><%= t.genre %></div>
+              </div>
+            </div>
+
+            <div class="low-container">
+              <p class="title"><%= t.title %></p>
+              <p class="body"><%= t.body %></p>
+              <p class="learn"><%= t.learn %></p>
+              <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                  <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= t.likes.count %>            
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>          
+                  <% end %>
+                <% end %>
+              <% else %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>    
+              <% end %>
+              <%= link_to post_path(t.id) , method: :get do %>
+                <i class="far fa-comments"></i>
+              <% end %>
+              <p class="time"><%= t.created_at.strftime('%Y/%m/%d') %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="pagenation">
+      <%= paginate @posts %>
+    </div>
+</div>

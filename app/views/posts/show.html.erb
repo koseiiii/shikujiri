@@ -1,0 +1,49 @@
+<header>
+    <div class="shikujiri">
+        しくじり体験記
+    </div>
+    <div class="headerbox">
+        <%= link_to "ホーム", posts_path %>
+        <% if user_signed_in? %>
+            <%= link_to "マイページ", user_path(current_user.id) %>　
+        <% end %>
+        <%= link_to "新規投稿", new_post_path %>
+    </div>
+</header>
+
+
+
+<h3>Tweet詳細</h3>
+<div class="content">
+<div class="post">
+    <p><%= @post.genre %></p>
+    <p><%= @post.title %></p>
+    <p><%= @post.body %></p>
+    <p><%= @post.learn %></p>
+    <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+
+</div>
+
+<div class="comment-wrapper">
+    <p>コメント一覧</p>
+    <% @comments.each do |c| %>
+    <div>
+        <%= c.user.name unless c.user.blank? %>
+        <br>
+        <%= c.content %>
+    </div>
+        <br>
+    <% end %>
+
+    <% if user_signed_in? %>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= f.text_area :content %>
+        <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+
+<%= link_to "Tweet一覧", posts_path %>
+</div>

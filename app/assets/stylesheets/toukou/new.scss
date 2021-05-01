@@ -1,0 +1,50 @@
+.content5{
+  background-color: rgba(1, 152, 252, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .field{
+    margin-top: 10px;
+    display: flex;
+  }
+
+  select{
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+  input[type="text"]{
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+
+  textarea{
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+  label{
+    width: 60px;
+    margin-top: 5px;
+    margin-right: 2px;
+    text-align: end;
+  }
+
+  .toukoubtn{
+    text-align: center;
+  }
+
+  input[type="submit"]{
+    width: 25%;
+    height: 30px;
+    margin-top: 20px;
+    border-color: white;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  a{
+    margin: 10px 0px;
+  }
+}

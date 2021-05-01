@@ -1,0 +1,137 @@
+<header>
+  <div class="shikujiri">
+    しくじり体験記
+  </div>
+  <div class="headerbox">
+      <%= link_to "ホーム", posts_path %>
+      <% if user_signed_in? %>
+        <%= link_to "マイページ", user_path(current_user.id) %>　
+      <% end %>
+      <%= link_to "新規投稿", new_post_path %>
+  </div>
+</header>
+
+<div class="content4">
+  <h2>マイページ</h2>
+
+  <div class="profile">
+
+    <div class="profilecontainer">
+      <%= image_tag @user.image_url, class:"user-icon" if @user.image? %>
+      <div class="profileinfo">
+        <div class="name">
+          <%= @user.name %>
+        </div>
+        <div class="selfinfo">
+          <%= @user.profile %>
+        </div>
+      </div>
+    </div>
+
+    <div class="profileedit">
+      <% if current_user.id == @user.id %>
+      <%= link_to "プロフィールを編集する", edit_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <input id="all" type="radio" name="tab_item" checked>
+    <label class="tab_item" for="all">ツイート</label>
+    <input id="programming" type="radio" name="tab_item">
+    <label class="tab_item" for="programming">いいね</label>
+
+
+    <div class="tab_content" id="all_content">
+
+      <div class="tabpostcontainer">
+        <% @posts.each do |t| %>
+          <div class="postbox">
+            <p class="info">ジャンル</p>
+            <p class="info2"><%= t.genre %></p>
+            <p class="info">タイトル</p>
+            <p class="info2"><%= t.title %></p>
+            <p class="info">しくじり</p>
+            <p class="info2"><%= t.body %></p>
+            <p class="info">学び</p>
+            <p class="info2"><%= t.learn %></p>
+
+            <div class="underinfo">
+              <%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                  <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= t.likes.count %>            
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>          
+                  <% end %>
+                <% end %>
+              <% else %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>    
+              <% end %>
+              <%= link_to post_path(t.id) , method: :get do %>
+                <i class="far fa-comments"></i>
+              <% end %>
+                <% if user_signed_in? && current_user.id == t.user_id %> 
+                  <div class="edit">    
+                    <%= button_to "編集する", edit_post_path(t.id), method: :get %>
+                  </div>
+                <% end %>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+
+    <div class="tab_content" id="programming_content">
+
+      <div class="tabpostcontainer">
+        <% @user.liked_posts.each do |t| %>
+          <div class="postbox">
+          <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <p class="info">ジャンル</p>
+            <p class="info2"><%= t.genre %></p>
+            <p class="info">タイトル</p>
+            <p class="info2"><%= t.title %></p>
+            <p class="info">しくじり</p>
+            <p class="info2"><%= t.body %></p>
+            <p class="info">学び</p>
+            <p class="info2"><%= t.learn %></p>
+            <div class="underinfo">
+              <%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                  <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= t.likes.count %>            
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>          
+                  <% end %>
+                <% end %>
+              <% else %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>    
+              <% end %>
+              <%= link_to post_path(t.id) , method: :get do %>
+                <i class="far fa-comments"></i>
+              <% end %>
+                <% if user_signed_in? && current_user.id == t.user_id %> 
+                  <div class="edit">    
+                    <%= button_to "編集する", edit_post_path(t.id), method: :get %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
+</div>

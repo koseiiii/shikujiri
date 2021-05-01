@@ -1,0 +1,46 @@
+header{
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  height: 80px;
+  background: rgba(1, 152, 252, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .shikujiri{
+    color: black;
+    font-size: 40px;
+    width: 500px;
+    height: 80px;
+    background: rgba(187, 98, 16, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .headerbox{
+    background: rgba(255, 166, 0, 0);
+    text-decoration: none;
+    display: flex;
+  }
+
+  a{
+    color: white;
+    width: 140px;
+    height: 60px;
+    margin-right: 20px;
+    background: #1c194ec0;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  a:hover{
+    opacity: 0.75;
+  }
+}
+

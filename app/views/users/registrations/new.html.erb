@@ -1,0 +1,49 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <header>
+      <h1>しくじり体験記</h1>
+      <div class="headerbox">
+        <div class="headerbtn">
+        <%= link_to "ログイン", posts_path %></div>
+        <div class="headerbtn">
+        <%= link_to "新規登録",new_user_registration_path %></div>
+      </div>
+  </header>
+
+<div class="content1">
+  <div class ="field">
+    <h2>新規登録</h2>
+  </div>
+  
+  <div class="field">
+  <%= f.text_field :name, autofocus: true, placeholder:"名前" %>
+  </div>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :image, class: "image_form" %>
+  </div>
+
+  <div class="field">
+    <% if @minimum_password_length %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード（６文字以上の英数字）" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード（確認用）" %>
+  </div>
+
+  <div class="field">
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>
+
+  <div class="signinbtn">
+    <%= render "users/shared/links" %>
+  </div>
+</div>

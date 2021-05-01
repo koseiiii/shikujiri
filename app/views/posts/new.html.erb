@@ -1,0 +1,47 @@
+<header>
+  <div class="shikujiri">
+    しくじり体験記
+  </div>
+  <div class="headerbox">
+      <%= link_to "ホーム", posts_path %>
+      <% if user_signed_in? %>
+        <%= link_to "マイページ", user_path(current_user.id) %>　
+      <% end %>
+      <%= link_to "新規投稿", new_post_path %>
+  </div>
+</header>
+
+<div class="content5">
+  <h1>新規しくじり</h1>
+  
+  <%= form_for @post do |f| %>
+    
+    <div class="field">
+      <%= f.label :ジャンル %>
+      <%= f.select :genre, 
+        [ ["生活","生活"], ["恋愛","恋愛"], ["学校","学校"], ["仕事","仕事"], ["遊び","遊び"], ["運動","運動"], ["就活","就活"], ["勉強","勉強"], ["旅行","旅行"], ["その他","その他"] ],  prompt: "選択して下さい" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title, :size => 50 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :しくじり%>
+      <%= f.text_area :body, :size => "80x10" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :学び %>
+      <%= f.text_area :learn, :size => "80x10" %>
+    </div>
+
+    <div class="toukoubtn">
+      <%= f.submit "投稿する" %>
+    </div>
+
+  <% end %>
+  
+  <%= link_to "ホーム", posts_path %>
+</div>

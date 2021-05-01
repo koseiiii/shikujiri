@@ -1,0 +1,60 @@
+.content6{
+  background-color: rgba(1, 152, 252, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .field{
+    margin-top: 10px;
+    display: flex;
+  }
+
+  select{
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+  input[type="text"]{
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+
+  textarea{
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+  label{
+    width: 60px;
+    margin-top: 5px;
+    margin-right: 2px;
+    text-align: end;
+  }
+
+  .editbtn{
+    text-align: center;
+  }
+
+  input[type="submit"]{
+    width: 25%;
+    height: 30px;
+    border-color: white;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .deletebtn{
+
+    input[type="submit"]{
+      width: 100px;
+      color: grey;
+      border-radius: 5px;
+      background-color:white;
+      border-color: white;
+      margin-bottom: 10px;
+      
+    }
+
+  }
+
+}
