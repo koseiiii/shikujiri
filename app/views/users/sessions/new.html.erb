@@ -1,16 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <header>
-      <h1>しくじり体験記</h1>
-      <div class="headerbox">
-        <div class="headerbtn">
-        <%= link_to "ログイン", posts_path %></div>
-        <div class="headerbtn">
-        <%= link_to "新規登録",new_user_registration_path %></div>
-      </div>
-  </header>
-
-
 <div class="content1">
   <div class ="field">
     <h2>ログイン</h2>
@@ -28,15 +17,15 @@
     <div class="checkbox">
       <div class="checkboxbtn">
         <%= f.check_box :remember_me %>
-        <p>ログイン情報を保存する</p>
+        <p class="text">ログイン情報を保存する</p>
       </div>
-    </div>
+    </div>  
   <% end %>
 
   <div class ="field">
     <%= f.submit "ログイン" %>
   </div>
-<% end %>
+  <% end %>
 
 <%= render "users/shared/links" %>
 

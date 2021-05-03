@@ -15,9 +15,32 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <header>
+      <div class="shikujiri">
+        しくじり体験記
+      </div>
+      <div class="headerbox">
+          <%= link_to "ホーム", posts_path %>
+          <%= link_to "マイページ", user_path(current_user.id) %>
+          <%= link_to "新規投稿", new_post_path %>
+      </div>
+      </header> 
+    <% else %>
+      <header>
+      <div class="shikujiri">
+        しくじり体験記
+      </div>
+      <div class="headerbox">
+          <%= link_to "トップ", hello_index_path %>
+          <%= link_to "ログイン", posts_path %>
+          <%= link_to "新規登録",new_user_registration_path %>
+      </div>
+      </header>
+    <% end %>
     <%= yield %>
     <footer>
-    <p>Copyright © 2021 Kosei Suzuki All Rights Reserved.</p>
+      <p>Copyright © 2021 Kosei Suzuki All Rights Reserved.</p>
     </footer>
   </body>
 </html>

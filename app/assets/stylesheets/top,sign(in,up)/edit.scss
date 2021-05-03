@@ -1,0 +1,78 @@
+.content8{
+  background-color: rgba(1, 152, 252, 0.2);
+  text-align: center;
+
+  .midashi{
+    font-size: 26px;
+    padding-top: 40px;
+  }
+
+  .field1{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+    .name{
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      width: 40%;
+      height: 30px;
+      padding: 2px 10px;
+      border: 2px solid rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+    }
+
+  .field2{
+    display: flex;
+    justify-content: center;
+  }
+
+    .email{
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="email"] {
+      width: 40%;
+      height: 30px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      padding: 2px 10px;
+      border: 2px solid rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+    }
+
+
+
+  input[type="file"] {
+    width: 40%;
+    height: 30px;
+    padding: 1px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    margin: auto;
+  }
+
+  input[type="password"] {
+    width: 40%;
+    height: 30px;
+    margin-top: 40px;
+    padding: 2px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    width: 20%;
+    height: 30px;
+    margin-top: 40px;
+    padding: 2px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
+
+}

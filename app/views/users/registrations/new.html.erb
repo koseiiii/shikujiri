@@ -1,23 +1,13 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <header>
-      <h1>しくじり体験記</h1>
-      <div class="headerbox">
-        <div class="headerbtn">
-        <%= link_to "ログイン", posts_path %></div>
-        <div class="headerbtn">
-        <%= link_to "新規登録",new_user_registration_path %></div>
-      </div>
-  </header>
-
-<div class="content1">
+<div class="content0">
   <div class ="field">
     <h2>新規登録</h2>
   </div>
   
   <div class="field">
-  <%= f.text_field :name, autofocus: true, placeholder:"名前" %>
+    <%= f.text_field :name, autofocus: true, placeholder:"名前" %>
   </div>
 
   <div class="field">
@@ -25,7 +15,7 @@
   </div>
 
   <div class="field">
-    <%= f.file_field :image, class: "image_form" %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="field">

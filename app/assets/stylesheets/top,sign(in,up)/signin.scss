@@ -44,4 +44,8 @@
     align-items: center;
     justify-content: center;
   }
+
+  input[type="checkbox"]{
+    display: flex;
+  }
 }

@@ -25,14 +25,13 @@ header{
     display: flex;
   }
 
-  a{
+  .headerbox a{
     color: white;
     width: 140px;
     height: 60px;
-    margin-right: 20px;
     background: #1c194ec0;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +40,7 @@ header{
 
   a:hover{
     opacity: 0.75;
+    transition: all 0.5s;
   }
 }
 

@@ -8,7 +8,8 @@ class PostsController < ApplicationController
     elsif params[:search] == ''
       @posts= Post.order("created_at DESC").page(params[:page]).per(6)
     else
-      @posts = Post.where("genre LIKE ? ",'%' + params[:search] + '%').or(Post.joins(:users).where("users.name LIKE ? ", "%" + params[:search] + "%")).or(Post.where("body LIKE ? ", "%" + params[:search] + "%")).or(Post.where("learn LIKE ? ", "%" + params[:search] + "%")).page(params[:page]).per(6)
+      @posts = Post.where("genre LIKE ? ",'%' + params[:search] + '%').or(Post.joins(:user).where("user.name LIKE ? ", "%" + params[:search] + "%"))
+      .or(Post.where("body LIKE ? ", "%" + params[:search] + "%")).or(Post.where("learn LIKE ? ", "%" + params[:search] + "%")).page(params[:page]).per(6)
     end
   end
 

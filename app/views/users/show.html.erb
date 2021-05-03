@@ -1,16 +1,3 @@
-<header>
-  <div class="shikujiri">
-    しくじり体験記
-  </div>
-  <div class="headerbox">
-      <%= link_to "ホーム", posts_path %>
-      <% if user_signed_in? %>
-        <%= link_to "マイページ", user_path(current_user.id) %>　
-      <% end %>
-      <%= link_to "新規投稿", new_post_path %>
-  </div>
-</header>
-
 <div class="content4">
   <h2>マイページ</h2>
 

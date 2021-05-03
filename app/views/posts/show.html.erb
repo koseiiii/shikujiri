@@ -1,49 +1,34 @@
-<header>
-    <div class="shikujiri">
-        しくじり体験記
-    </div>
-    <div class="headerbox">
-        <%= link_to "ホーム", posts_path %>
+<div class="content7">
+    <p class="midashi">ツイート詳細</p>
+        <div class="post">
+            <%= link_to image_tag(@post.user.image_url), user_path(@post.user_id) if @post.user.image? %>
+            <p><%= @post.genre %></p>
+            <p><%= @post.title %></p>
+            <p><%= @post.body %></p>
+            <p><%= @post.learn %></p>
+            <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+        </div>
+
+    <div class="comment-wrapper">
+        <p class="komidashi">コメント一覧</p>
+        <% @comments.each do |c| %>
+        <div>
+            <%= c.user.name unless c.user.blank? %>
+            <br>
+            <%= c.content %>
+        </div>
+            <br>
+        <% end %>
+
         <% if user_signed_in? %>
-            <%= link_to "マイページ", user_path(current_user.id) %>　
+            <%= form_with(model: [@post, @comment], local: true) do |f| %>
+                <%= f.text_area :content %>
+                <%= button_tag type: "submit" do %>
+                <i class="far fa-comments"></i> コメントする
+                <% end %>
+            <% end %>
         <% end %>
-        <%= link_to "新規投稿", new_post_path %>
     </div>
-</header>
 
-
-
-<h3>Tweet詳細</h3>
-<div class="content">
-<div class="post">
-    <p><%= @post.genre %></p>
-    <p><%= @post.title %></p>
-    <p><%= @post.body %></p>
-    <p><%= @post.learn %></p>
-    <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-
-</div>
-
-<div class="comment-wrapper">
-    <p>コメント一覧</p>
-    <% @comments.each do |c| %>
-    <div>
-        <%= c.user.name unless c.user.blank? %>
-        <br>
-        <%= c.content %>
-    </div>
-        <br>
-    <% end %>
-
-    <% if user_signed_in? %>
-    <%= form_with(model: [@post, @comment], local: true) do |f| %>
-        <%= f.text_area :content %>
-        <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
-        <% end %>
-    <% end %>
-<% end %>
-</div>
-
-<%= link_to "Tweet一覧", posts_path %>
+    <%= link_to "Tweet一覧", posts_path %>
 </div>
